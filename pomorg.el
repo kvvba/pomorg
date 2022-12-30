@@ -10,15 +10,15 @@
 (require 'org-clock)
 (require 'org-element)
 
-(defvar pomo-work-periods 5)
+(defvar pomo-work-periods 8)
 
 (defvar pomo-work-periods-remaining pomo-work-periods)
 
-(defvar pomo-time-work "00:00:20")
+(defvar pomo-time-work "00:50:00")
 
-(defvar pomo-time-break "00:00:5")
+(defvar pomo-time-break "00:10:00")
 
-(defvar pomo-time-long-break "00:00:15")
+(defvar pomo-time-long-break "00:30:00")
 
 (defvar pomo-long-break-interval 4)
 
