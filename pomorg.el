@@ -23,7 +23,6 @@
 
 ;;; Code:
 
-;; (require 'org)
 (require 'org-clock)
 (require 'org-element)
 
