@@ -109,6 +109,7 @@
 	(interactive)
 	(message "Current pomodoro period: %s." pomo-current-period))
 
+;;;###autoload
 (defun pomo-stop ()
 	"Stops the pomodoro timer."
 	(interactive)
