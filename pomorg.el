@@ -1,4 +1,20 @@
-;;; pomorg.el --- Pomodoro timer using org-timer
+;;; pomorg.el --- Pomodoro timer using org-timer -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2022 kvvba@posteo.net
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 
 ;;; Commentary:
 
@@ -7,6 +23,7 @@
 
 ;;; Code:
 
+;; (require 'org)
 (require 'org-clock)
 (require 'org-element)
 
@@ -24,8 +41,9 @@
 
 (defvar pomo-current-period "break")
 
+;;;###autoload
 (defun pomo-start (&optional n)
-	"Set pomo-periods to N, begin pomodoro timer."
+	"Set pomo-work-periods to N, begin pomodoro timer."
 	(interactive "nNumber of pomodoros: ")
 	(setq pomo-work-periods-remaining n)
 	(setq pomo-work-periods n)
@@ -46,7 +64,6 @@
 
 (defun pomo-run-long-break ()
 	"Run long break period."
-	(interactive)
 	(setq pomo-current-period "long break")
 	(message "Time for a long break (%s)." pomo-time-long-break)
 	(org-timer-set-timer pomo-time-long-break))
@@ -69,21 +86,25 @@
 	(message "Pomodoros complete.")
 	(remove-hook 'org-timer-done-hook 'pomo-run-next))
 
+;;;###autoload
 (defun pomo-pause-or-continue ()
 	"Pause or continue pomodoro timer."
 	(interactive)
 	(org-timer-pause-or-continue))
 
+;;;###autoload
 (defun pomo-show-remaining ()
 	"Print number of remaining pomodoros as message."
 	(interactive)
 	(message "%s/%s pomodoros remaining." pomo-work-periods-remaining pomo-work-periods))
 
+;;;###autoload
 (defun pomo-show-completed ()
 	"Print number of completed pomodoros as a message."
 	(interactive)
 	(message "%s/%s pomodoros completed." (- pomo-work-periods pomo-work-periods-remaining) pomo-work-periods))
 
+;;;###autoload
 (defun pomo-show-period ()
 	"Print current pomodoro time period (work/break/long break)."
 	(interactive)
