@@ -1,0 +1,41 @@
+* Introduction
+Pomorg is a simple pomodoro timer for Emacs, which uses the built-in org-clock.
+
+* Installation
+To install using [[https://github.com/radian-software/straight.el][straight.el]]:
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package
+   '(pomorg :type git :host github :repo "kvvba/pomorg"))
+#+END_SRC
+
+To install with [[https://github.com/radian-software/straight.el][straight.el]] with [[https://github.com/conao3/leaf.el][leaf.el]]:
+#+BEGIN_SRC emacs-lisp
+  (leaf pomorg
+    :straight (pomorg
+               :type git
+               :host github
+               :repo "kvvba/pomorg"))
+#+END_SRC
+
+Otherwise, clone this repository somewhere and add it to your load path.
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "your/load/path")
+  (require 'pomorg)
+#+END_SRC
+
+* Example configuration
+
+#+BEGIN_SRC emacs-lisp
+  (leaf pomorg
+    :straight (pomorg
+               :type git
+               :host github
+               :repo "kvvba/pomorg")
+    :config
+    (setq pomo-time-work "00:20:00")
+    (setq pomo-time-break "00:05:00")
+    (setq pomo-time-long-break "00:10:00")
+    (setq pomo-long-break-interval 5))
+
+#+END_SRC
+
